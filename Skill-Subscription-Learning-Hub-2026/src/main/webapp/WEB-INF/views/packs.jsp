@@ -81,13 +81,16 @@ User - logs in -views packs - selects a plan
 			    <button type="submit">
 			        Update
 			    </button>
+			   <button type="button" onclick="checkRole()">
+			       Update
+			   </button>
+
 
 			</form>
 
 
 			<br>
             <!-- subscribe action -->
-            <a href="/subscribe?userId=1&packId=${pack.id}">
             <a href="/subscribe?packId=${pack.id}">
                 Subscribe
             </a>
@@ -97,6 +100,38 @@ User - logs in -views packs - selects a plan
     </c:forEach>
 
 </div>
+<script>
+
+function checkRole(){
+
+    let role = prompt("Enter role (admin/user):");
+
+    if(role === "admin"){
+
+        let pin = prompt("Enter Admin PIN:");
+
+        if(pin === "1234"){
+            document.querySelector("form").submit();
+        }
+        else{
+            alert("Wrong PIN");
+        }
+
+    }
+    else if(role === "user"){
+
+        alert("You are not eligible to update packs");
+
+    }
+    else{
+
+        alert("Invalid role");
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
