@@ -31,6 +31,8 @@ User - logs in -views packs - selects a plan
 <div class="header">
     <img src="/images/logo.png">
     <h2>Available Skill Packs</h2>
+	<a href="/login">
+	    <button>Login</button>
 </div>
 
 <div class="container">
@@ -65,4 +67,5 @@ User - logs in -views packs - selects a plan
 </div>
 
 </body>
+</html>
 </html>
