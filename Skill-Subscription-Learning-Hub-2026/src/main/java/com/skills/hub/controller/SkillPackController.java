@@ -55,10 +55,13 @@ public class SkillPackController {
         return "redirect:/packs";
     }
 
-    public SkillPackService getPackService() {
-        return packService;
     @PostMapping("/update-pack")
     public String updatePack(@ModelAttribute SkillPack pack) {
+
+        System.out.println("ID = " + pack.getId());
+        System.out.println("Title = " + pack.getTitle());
+        System.out.println("Description = " + pack.getDescription());
+        System.out.println("Price = " + pack.getPrice());
 
         packService.updateSkillPack(pack);
 
