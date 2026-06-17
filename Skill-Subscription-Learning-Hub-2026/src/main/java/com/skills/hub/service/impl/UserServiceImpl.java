@@ -21,12 +21,6 @@ This class contains BUSINESS LOGIC for users.
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepo;
-
-    public UserServiceImpl(UserRepository userRepo) {
-        this.userRepo = userRepo;
-    }
-
     @Override
     public User registerUser(User user) {
 
@@ -37,8 +31,20 @@ public class UserServiceImpl implements UserService {
         // STEP 2: if exists → stop process
         // STEP 3: if not → save user to DB
         // STEP 4: return saved user
+        //Checking if email already exists
+        User existingUser = userRepo.findByEmail(user.getEmail());
 
         return null;
+        //If exists, stop process
+        if (existingUser != null) {
+            return null;
+        }
+
+        //Else Save user to DB
+        User savedUser = userRepo.save(user);
+
+        //Then return saved user
+        return savedUser;
     }
 
     @Override
@@ -52,7 +58,21 @@ public class UserServiceImpl implements UserService {
         // STEP 3: check password match
         // STEP 4: if correct → return user
         // STEP 5: else → return null
+        //We find user by email
+        User user = userRepo.findByEmail(email);
 
+        // If user not found we return
+        if (user == null) {
+            return null;
+        }
+
+        //Check password and return user
+        if (user.getPassword().equals(password)) {
+            return user;
+        }
+
+        //If password incorrect
         return null;
     }
+}
 }
