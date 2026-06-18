@@ -1,77 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Skill Pack</title>
-
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <script th:src="@{/js/app.js}"></script>
-</head>
-
+<html>
 <body>
 
-<!-- Header -->
-<div class="header">
-    <div class="header-left">
-        <img th:src="@{/images/logo.png}" alt="Logo">
-        <h1>Skill Subscription Hub</h1>
-    </div>
+<h2>Add Skill Pack</h2>
 
-    <div class="nav-links">
-        <a th:href="@{/dashboard}">Dashboard</a>
-        <a th:href="@{/packs}">Skill Packs</a>
-        <a th:href="@{/logout}"
-           onclick="return confirmLogout()">Logout</a>
-    </div>
-</div>
+<form action="/add-pack" method="post">
 
-<!-- Form Container -->
-<div class="container">
+    Title: <input type="text" name="title"/> <br><br>
+    Description: <input type="text" name="description"/> <br><br>
+    Price: <input type="text" name="price"/> <br><br>
 
-    <h2>Add Skill Pack</h2>
+    <button type="submit">Save</button>
 
-    <form th:action="@{/add-pack}" method="post">
+</form>
 
-        <label>Title</label>
-        <input type="text"
-               name="title"
-               placeholder="Enter Skill Pack Title"
-               required>
-
-        <label>Description</label>
-        <textarea
-                name="description"
-                placeholder="Enter Skill Pack Description"
-                required>
-        </textarea>
-
-        <label>Price</label>
-        <input type="number"
-               step="0.01"
-               name="price"
-               placeholder="Enter Price"
-               required>
-
-        <button type="submit">
-            Save Skill Pack
-        </button>
-
-    </form>
-
-    <br>
-
-    <a th:href="@{/packs}" class="btn">
-        Back to Skill Packs
-    </a>
-
-</div>
-
-<!-- Footer -->
-<div class="footer">
-    <p>&copy; 2026 Skill Subscription Hub</p>
-</div>
+<a href="/packs">Back</a>
 
 </body>
 </html>
