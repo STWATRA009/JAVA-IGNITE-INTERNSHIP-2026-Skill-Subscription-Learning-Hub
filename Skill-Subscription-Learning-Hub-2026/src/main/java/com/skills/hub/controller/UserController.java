@@ -88,6 +88,6 @@ public class UserController {
 
     @PostConstruct
     public void test() {
-        System.out.println("USER CONTROLLER LOADED");
+        System.out.println("USER CONTROLLER LOADED!!!");
     }
 }
