@@ -32,11 +32,11 @@ public class SkillPackServiceImpl implements SkillPackService {
     @Override
     public SkillPack updateSkillPack(SkillPack pack) {
 
-        System.out.println("Service Called");
+        System.out.println("*SERVICE CALLED*");
         System.out.println(pack.getId());
 
         if (!packRepo.existsById(pack.getId())) {
-            System.out.println("Pack not found!");
+            System.out.println("PACK NOT FOUND!!!");
             return null;
         }
 
