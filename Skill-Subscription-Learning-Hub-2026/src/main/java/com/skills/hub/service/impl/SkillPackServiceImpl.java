@@ -31,7 +31,6 @@ public class SkillPackServiceImpl implements SkillPackService {
 
     @Override
     public SkillPack updateSkillPack(SkillPack pack) {
-    	//used to update user's pack by checking their Id
 
         System.out.println("Service Called");
         System.out.println(pack.getId());
@@ -48,6 +47,13 @@ public class SkillPackServiceImpl implements SkillPackService {
     public void deleteSkillPack(Long id) {
     	//it deletes the users pack by taking user id
         packRepo.deleteById(id);
+    }
+    
+    @Override
+    public List<SkillPack> searchPacks(String keyword) {
+
+        return packRepo.findByTitleContainingIgnoreCase(keyword);
+
     }
 
     public SkillPackRepository getPackRepo() {
