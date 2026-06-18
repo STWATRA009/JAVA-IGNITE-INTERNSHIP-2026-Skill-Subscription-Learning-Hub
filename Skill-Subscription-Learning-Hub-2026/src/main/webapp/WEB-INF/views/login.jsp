@@ -1,102 +1,62 @@
-<!DOCTYPE html>
+<!--
+	Why it is used:
+
+	This is the entry gate of your system.
+
+	What it does:
+	Takes username/email + password
+	Sends data to backend (Servlet/Controller)
+	Checks if user is valid
+	Redirects to dashboard if correct
+	Why it is needed:
+
+	Without login, anyone can enter the system. So this page:
+
+	Controls security
+	Identifies the user
+	Starts the user session
+	Simple flow:
+
+	User - enters details - click login -backend verifies -success/fail
+	
+-->
+
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Login - Skill Subscription Hub</title>
-
-```
-<!-- CSS -->
-<link rel="stylesheet" href="/css/style.css">
-
-<!-- JavaScript -->
-<script src="/js/app.js"></script>
-```
-
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
+<!-- HEADER -->
 <div class="header">
-
-```
-<div class="header-left">
-    <img src="/images/logo.png" alt="Logo">
+    <img src="/images/logo.png">
     <h2>Skill Subscription Hub</h2>
 </div>
-```
 
-</div>
-
-<!-- =========================
-     LOGIN FORM
-========================= -->
-
+<!-- LOGIN FORM -->
 <div class="container">
 
-```
-<h2>Login</h2>
+    <h3>Login</h3>
 
-<!-- Error Message -->
-<% if(request.getAttribute("error") != null){ %>
-    <p class="error">
-        <%= request.getAttribute("error") %>
-    </p>
-<% } %>
+    <form action="/login" method="post">
 
-<!-- Success Message -->
-<% if(request.getAttribute("success") != null){ %>
-    <p class="success">
-        <%= request.getAttribute("success") %>
-    </p>
-<% } %>
+        <!-- enter email -->
+        <input type="text" name="email" placeholder="Enter Email">
 
-<form action="/login"
-      method="post"
-      onsubmit="return validateLoginForm()">
+        <!-- enter password -->
+        <input type="password" name="password" placeholder="Enter Password">
 
-    <label>Email</label>
-    <input type="email"
-           id="email"
-           name="email"
-           placeholder="Enter Email"
-           required>
+        <!-- submit login -->
+        <button type="submit">Login</button>
 
-    <label>Password</label>
-    <input type="password"
-           id="password"
-           name="password"
-           placeholder="Enter Password"
-           required>
+    </form>
 
-    <button type="submit">
-        Login
-    </button>
+    <p>New user? <a href="/register">Register here</a></p>
 
-</form>
-
-<br>
-
-<p>
-    New User?
-    <a href="/register">
-        Register Here
-    </a>
-</p>
-```
-
-</div>
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<div class="footer">
-    <p>© 2026 Skill Subscription Hub</p>
 </div>
 
 </body>
