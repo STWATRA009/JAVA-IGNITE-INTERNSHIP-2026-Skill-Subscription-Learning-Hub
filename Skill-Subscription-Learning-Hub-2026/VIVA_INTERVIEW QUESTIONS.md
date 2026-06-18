@@ -36,8 +36,10 @@ deleteById()
 - Difference between GET and POST?
 
 ANS:- 
-GET: 1. Its used to retrieve data 2. Data is sent in URL
-POST: 1. Its used to send/save data 2. Data is sent in request body
+GET: 1. Its used to retrieve data 
+     2. Data is sent in URL
+POST: 1. Its used to send/save data 
+      2. Data is sent in request body
 
 ---
 
