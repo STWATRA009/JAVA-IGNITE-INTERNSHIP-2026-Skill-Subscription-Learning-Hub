@@ -6,6 +6,7 @@
 
 ANS:- Spring Boot is a Java framework used to create web applications and REST APIs quickly with less configuration. It provides auto-configuration, embedded servers, and easy database connection.
 
+
 - What is MVC architecture?
 
 ANS:- MVC stands for "Model View Controller" where,
@@ -22,6 +23,7 @@ Controller : Handles user requests and connects Model with View
 ANS:- Service layer contains the business logic of the application. Controller calls Service, and Service communicates with Repository.
 Controller -> UserService -> UserRepository -> Database
 
+
 - What is Repository in Spring Data JPA?
 
 ANS:- Repository is the layer used to communicate with the database. It provides CRUD operations like:
@@ -29,6 +31,7 @@ save()
 findAll()
 findById()
 deleteById()
+
 
 - Difference between GET and POST?
 
@@ -50,10 +53,12 @@ ANS:-
 5. Then save using SubscriptionRepository
 6. Database
 
+
 - How do you link User and SkillPack?
 
 ANS:- We create a relationship using the Subscription entity.
 User -> Subscription -> SkillPack
+
 
 - Why do we use Service layer?
   
@@ -63,6 +68,7 @@ Benefits:
 2.Easy maintenance
 3.Controller only handles requests
 4.Logic can be reused
+
 
 - How does JSP get data from Controller?
   
