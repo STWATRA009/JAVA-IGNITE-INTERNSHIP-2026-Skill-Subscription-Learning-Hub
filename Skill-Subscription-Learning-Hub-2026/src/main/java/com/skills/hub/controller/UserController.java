@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,20 +26,25 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterPage() {
 
-        //Return register page
         return "register";
     }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user,
+                               Model model) {
 
-
+        
         User savedUser = userService.registerUser(user);
 
-
+        
         if (savedUser != null) {
+        if(savedUser != null) {
             return "redirect:/login";
         }
+
+        model.addAttribute("error",
+            "Name or Email is already in use!");
 
         return "register";
     }
@@ -52,14 +58,11 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestParam String email,
-                        @RequestParam String password) {
                         @RequestParam String password,
                         HttpSession session) {
 
-        
         User user = userService.login(email, password);
 
-        
         if (user != null) {
 
             // Store logged-in user in session
@@ -70,7 +73,7 @@ public class UserController {
 
         return "login";
     }
-    
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
 
@@ -78,11 +81,11 @@ public class UserController {
 
         return "redirect:/login";
     }
-    
+
     public UserService getUserService() {
         return userService;
     }
-    
+
     @PostConstruct
     public void test() {
         System.out.println("USER CONTROLLER LOADED");
